@@ -1,0 +1,24 @@
+<mat-card class="card-border-top p-0 mat-elevation-z8 m-3">
+    <div>
+        <mat-toolbar class="form-toolbar" color="primary">Assinged subjects to class</mat-toolbar>
+    </div>
+    <div class="row m-0 pt-3">
+        <div class="col-1"><b>Class</b></div>
+        <div class="col-2"><b>Exam</b></div>
+    </div>
+    <div class="row m-0" *ngFor="let class of classList">
+        <div class="col-1"> {{class.class_name}} </div>
+        <div class="col-2">
+            <div *ngFor="let exam of classWithExam">
+                <div *ngIf="class.class_id === exam.class_id">
+                    <div class="row">
+                        <div class="col-1">
+                            <mat-icon matTooltip="Remove" matTooltipPosition="left" matTooltipClass="bg-warning" (click)="removeExam(class.class_id,exam.exam_id)">remove_circle</mat-icon>
+                        </div>
+                        <div class="col-9">{{exam.exam_name}}</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</mat-card>
